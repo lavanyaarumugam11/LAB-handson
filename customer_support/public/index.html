@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Customer Support Demo</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Customer Support (Local Demo)</h1>
+      <p>Type a message and press Send. This demo echoes a canned support reply.</p>
+    </header>
+    <main>
+      <div id="chat"></div>
+      <form id="msgForm">
+        <input id="msgInput" placeholder="Describe your issue..." autocomplete="off" />
+        <button type="submit">Send</button>
+      </form>
+    </main>
+    <footer>
+      <small>Demo server: <span id="host">unknown</span></small>
+    </footer>
+  </div>
+
+  <script>
+    const chat = document.getElementById('chat');
+    const form = document.getElementById('msgForm');
+    const input = document.getElementById('msgInput');
+    const host = document.getElementById('host');
+
+    async function addMessage(cls, text) {
+      const el = document.createElement('div');
+      el.className = 'msg ' + cls;
+      el.textContent = text;
+      chat.appendChild(el);
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    async function sendMessage(text) {
+      addMessage('user', text);
+      try {
+        const resp = await fetch('/api/message', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: text })
+        });
+        const data = await resp.json();
+        addMessage('bot', data.reply || JSON.stringify(data));
+      } catch (err) {
+        addMessage('bot', 'Error contacting server: ' + err.message);
+      }
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const txt = input.value.trim();
+      if (!txt) return;
+      input.value = '';
+      sendMessage(txt);
+    });
+
+    // Show host info
+    fetch('/api/health').then(r => r.json()).then(j => {
+      host.textContent = window.location.host + ' — ' + j.status;
+    }).catch(() => { host.textContent = window.location.host; });
+  </script>
+</body>
+</html>

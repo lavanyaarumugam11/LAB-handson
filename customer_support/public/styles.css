@@ -1,0 +1,14 @@
+* { box-sizing: border-box; }
+body { font-family: Arial, Helvetica, sans-serif; margin:0; background:#f6f8fb; color:#222 }
+#app { max-width:780px; margin:24px auto; background:#fff; border-radius:8px; box-shadow:0 6px 18px rgba(20,30,60,0.08); overflow:hidden }
+header { padding:18px 20px; border-bottom:1px solid #eee }
+h1 { margin:0; font-size:20px }
+main { padding:16px; display:flex; flex-direction:column; gap:12px }
+#chat { height:320px; overflow:auto; padding:12px; background:#fafbfd; border:1px solid #f0f2f6; border-radius:6px }
+.msg { padding:8px 10px; margin-bottom:8px; border-radius:6px; max-width:78%; }
+.msg.user { background:#e7f0ff; margin-left:auto; text-align:right }
+.msg.bot { background:#f1f6f4; margin-right:auto }
+form { display:flex; gap:8px }
+input { flex:1; padding:10px; border:1px solid #ddd; border-radius:6px }
+button { padding:10px 14px; border-radius:6px; border:none; background:#2563eb; color:#fff }
+footer { padding:10px 16px; font-size:12px; color:#666; border-top:1px solid #eee }

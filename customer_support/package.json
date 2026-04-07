@@ -1,0 +1,15 @@
+{
+  "name": "customer-support",
+  "version": "1.0.0",
+  "description": "Minimal local customer support app (demo) - serves a simple chat UI and an example API endpoint.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  }
+}
