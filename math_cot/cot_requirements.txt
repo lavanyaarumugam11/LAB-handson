@@ -1,0 +1,3 @@
+openai>=0.27.0
+flask>=2.0.0
+# This project uses Python's standard library for safe eval; add extras if you want higher-precision arithmetic
