@@ -1,0 +1,7 @@
+Name, Age , Salary , Department
+Alice, 28, 70000, Engineering
+Bob, , 50000, Sales
+Charlie, 35, , Marketing
+Alice, 28, 70000, Engineering
+, , , 
+Eve, 42, 120000, Executive

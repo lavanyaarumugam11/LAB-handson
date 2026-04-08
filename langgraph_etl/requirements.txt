@@ -1,0 +1,5 @@
+pandas
+langgraph
+fastapi
+uvicorn
+python-multipart
